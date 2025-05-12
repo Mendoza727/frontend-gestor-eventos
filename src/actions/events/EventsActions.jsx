@@ -86,9 +86,18 @@ export const EventActions = () => {
     }
 
     // actualizar un evento por ID
-    const UpdateEventById = async (id) => {
+    const UpdateEventById = async (id, formdata) => {  // Asegúrate de pasar formdata
         try {
-            const { data, status } = await GestorApi.patch(`${eventApi}${id}/`, {}, {
+            const eventData = {
+                name: formdata.name,
+                place: formdata.place,
+                total_tickets: parseInt(formdata.total_tickets, 10),
+                available_tickets: parseInt(formdata.available_tickets, 10),
+                ticket_price: parseFloat(formdata.ticket_price),
+                dateHourToEvent: formdata.dateHourToEvent,
+            };
+
+            const { data, status } = await GestorApi.patch(`${eventApi}${id}/`, eventData, {
                 headers: getAuthHeaders() // Usamos la función auxiliar para los headers
             });
 
@@ -104,6 +113,7 @@ export const EventActions = () => {
             };
         }
     }
+
 
     // eliminamos un evento por el id
     const DeleteEventById = async (id) => {
