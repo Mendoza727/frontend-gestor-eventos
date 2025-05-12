@@ -53,8 +53,8 @@ src/
 
 1. Clona el repositorio:
 ```bash
-   git clone https://github.com/tu-usuario/react-events-app.git
-   cd react-events-app
+   git clone https://github.com/Mendoza727/frontend-gestor-eventos.git
+   cd frontend-gestor-eventos
 ```
 Instala dependencias:
 
